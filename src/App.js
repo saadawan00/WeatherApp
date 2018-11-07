@@ -1,26 +1,28 @@
-import React, { Component } from 'react';
-import logo from './logo.svg';
-import './App.css';
+import React, { Component } from "react";
+import { Layout } from "antd";
+import Login from "./components/Login";
+
+import "./App.css";
+
+const { Header, Footer, Content } = Layout;
 
 class App extends Component {
   render() {
     return (
-      <div className="App">
-        <header className="App-header">
-          <img src={logo} className="App-logo" alt="logo" />
-          <p>
-            Edit <code>src/App.js</code> and save to reload.
-          </p>
-          <a
-            className="App-link"
-            href="https://reactjs.org"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Learn React
-          </a>
-        </header>
-      </div>
+      <Layout className="App">
+        <Header className="App-header">
+          <h1>Weather Broadcast</h1>
+        </Header>
+        <Login />
+        {/* <Content className="App-content">
+          Welcome to Weather Broadcast. An exclusive place for your weather
+          queries.
+        </Content> */}
+
+        <Footer className="App-footer">
+          &copy; All Rights Reserved to Weather Broadcast 2019
+        </Footer>
+      </Layout>
     );
   }
 }
