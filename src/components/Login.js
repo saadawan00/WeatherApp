@@ -6,20 +6,28 @@ import "../App";
 
 const { Header, Footer, Content } = Layout;
 
-const name = "saadawan";
-const password = "abcd";
+const userName = "saadawan";
+const userPassword = "abcd";
 
 const LoginCheck = props => {
-  return props.name == name && props.password == password ? (
-    <h1>Successgully logged in</h1>
-  ) : (
-    <h1>wrong username and pass</h1>
-  );
+  //   return props.name == userName && props.password == userPassword ? (
+  //     <h1>Successgully logged in</h1>
+  //   ) : (
+  //     <h1>wrong username and pass</h1>
+  //   );
+  console.log("hi loginCheck");
+  return props.name == userName && props.password == userPassword
+    ? console.log("Successgully logged in")
+    : console.log("wrong username and pass");
 };
 
 const Login = () => {
-  const name = "";
-  const password = "";
+  let name = "";
+  let password = "";
+  const handleChange = e => {
+    e.target.name = e.target.value;
+  };
+
   return (
     <Layout className="App">
       {/* <Header className="App-header">
@@ -27,14 +35,18 @@ const Login = () => {
       </Header> */}
       <Content className="App-content">
         <Input
+          name="name"
           className="App-input"
           placeholder="Enter Username"
+          onChange={handleChange}
           prefix={<Icon type="user" style={{ color: "rgba(0,0,0,.25)" }} />}
         />
         <br />
         <Input
+          name="password"
           className="App-input"
           placeholder="Enter Password"
+          onChange={handleChange}
           prefix={
             <Icon
               type="lock"
@@ -45,8 +57,10 @@ const Login = () => {
         />
         <br />
         <Button
+          href="https://www.facebook.com"
           type="primary"
           shape="circle"
+          onSubmit={<LoginCheck name={name} password={password} />}
           prefix={<Icon type="login" theme="outlined" />}
         >
           <Icon type="login" theme="outlined" />
