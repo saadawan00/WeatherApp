@@ -1,7 +1,6 @@
 import React, { Component } from "react";
-import Navigation from "./Navigation";
 import axios from "axios";
-import { Input, Icon, Button } from "antd";
+import { Input } from "antd";
 
 import "../App.css";
 
@@ -34,6 +33,7 @@ class WeatherView extends Component {
     );
     console.log("api_data", api_call.data);
     this.setState({
+      city: api_call.data.name,
       wind: api_call.data.wind.speed,
       temp: api_call.data.main.temp,
       visibility: api_call.data.visibility
@@ -44,23 +44,13 @@ class WeatherView extends Component {
   }
 
   render() {
-    const { cityName } = this.props;
+    const { city, temp, wind, visibility } = this.state;
     return (
-      <div>
-        <Input
-          placeholder="City"
-          className="App-input"
-          onChange={this.handleChange}
-        />
-        <br />
-
-        <div className="">
-          City: {cityName}
-          Current Temperature: {this.state.temp}
-          Wind: {this.state.wind}
-          Visibility: {this.state.visibility / 1000}km
-        </div>
-        <Navigation />
+      <div className="temp-disp">
+        <p>City: {city}</p>
+        <p>Current Temperature: {temp}</p>
+        <p>Wind: {wind}</p>
+        <p>Visibility: {visibility / 1000}km</p>
       </div>
     );
   }
