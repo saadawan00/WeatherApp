@@ -34,7 +34,7 @@ class Login extends Component {
   render() {
     return (
       <Layout className="App">
-        <Navigation />
+        {/* <Navigation /> */}
         <Content className="App-content">
           <Input
             name="name"
@@ -45,7 +45,7 @@ class Login extends Component {
               <Icon
                 type="user"
                 theme="outlined"
-                spin={true}
+                spin={false}
                 style={{ color: "rgba(0,0,0,.25)" }}
               />
             }
@@ -59,8 +59,8 @@ class Login extends Component {
             prefix={
               <Icon
                 type="lock"
-                theme="twoTone"
-                spin={true}
+                theme="outlined"
+                spin={false}
                 style={{ color: "rgba(0,0,0,.25)" }}
               />
             }
