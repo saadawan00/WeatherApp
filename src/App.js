@@ -7,7 +7,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Navigation from "./components/Navigation";
 import "./App.css";
 
-// IMPORT ENDS HERE
+// IMPORTS END HERE
 
 const { Header, Footer, Content } = Layout;
 

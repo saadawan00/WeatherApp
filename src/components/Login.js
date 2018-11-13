@@ -1,18 +1,20 @@
 import React, { Component } from "react";
 import { Input, Icon, Button, Layout } from "antd";
 import Navigation from "./Navigation";
+import { Redirect } from "react-router-dom";
 
 import "../App";
 
 const { Header, Footer, Content } = Layout;
 
-const userName = "saadawan";
-const userPassword = "abcd";
+const userName = "sa";
+const userPassword = "asd";
 
 class Login extends Component {
   state = {
     name: "",
-    password: ""
+    password: "",
+    isLoggedIn: false
   };
   handleChange = e => {
     this.setState({
@@ -21,17 +23,17 @@ class Login extends Component {
   };
 
   handleSubmit = () => {
-    console.log("submit");
-    this.state.name == userName && this.state.password == userPassword
-      ? console.log("success")
-      : console.log("not logedin");
+    const { name, password } = this.state;
+
+    name == userName && password == userPassword
+      ? this.setState({
+          isLoggedIn: true
+        })
+      : console.log("add validationa");
   };
   render() {
     return (
       <Layout className="App">
-        {/* <Header className="App-header">
-        <h1>Weather Broadcast</h1>
-      </Header> */}
         <Navigation />
         <Content className="App-content">
           <Input
@@ -73,16 +75,15 @@ class Login extends Component {
             <Icon type="login" theme="outlined" />
           </Button>
           {/* <LoginCheck /> */}
+          {this.state.isLoggedIn == true ? (
+            <Redirect from="/login" to="/weather" />
+          ) : (
+            <div />
+          )}
         </Content>
-
-        {/* <Footer className="App-footer">
-        &copy; All Rights Reserved to Weather Broadcast 2019
-      </Footer> */}
       </Layout>
     );
   }
 }
-
-// return <Login />;
 
 export default Login;

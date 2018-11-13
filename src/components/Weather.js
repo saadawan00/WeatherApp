@@ -27,15 +27,12 @@ class Weather extends Component {
               isButtonClicked: true
             });
           }}
-          //   prefix={<Icon type="thunderbolt" theme="twoTone" />}
         />
         {isButtonClicked == true ? (
           <WeatherView cityName={cityName} />
         ) : (
           <div />
         )}
-
-        {/* <WeatherView value={val} /> */}
       </div>
     );
   }
