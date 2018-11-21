@@ -10,23 +10,30 @@ class Weather extends Component {
     cityName: "",
     isButtonClicked: false
   };
+  handleSubmit = e => {
+    this.setState({
+      cityName: e,
+      isButtonClicked: true
+    });
+    console.log("handleSUbmit");
+  };
 
   render() {
     const { cityName, isButtonClicked } = this.state;
     return (
-      <div>
-        <Navigation />
+      <div className="App">
         <Search
           className="App-input"
           placeholder="Search City"
           enterButton={<Icon type="search" theme="outlined" />}
           size="large"
-          onSearch={value => {
-            this.setState({
-              cityName: value,
-              isButtonClicked: true
-            });
-          }}
+          // onSearch={value => {
+          //   this.setState({
+          //     cityName: value,
+          //     isButtonClicked: true
+          //   });
+          // }}
+          onSearch={value => this.handleSubmit(value)}
         />
         {isButtonClicked == true ? (
           <WeatherView cityName={cityName} />

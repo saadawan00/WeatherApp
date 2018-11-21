@@ -42,7 +42,11 @@ class WeatherView extends Component {
   componentDidMount() {
     this.getWeather();
   }
-
+  componentDidUpdate(prevProps) {
+    if (this.props.cityName !== prevProps.cityName) {
+      this.getWeather();
+    }
+  }
   render() {
     const { city, temp, wind, visibility } = this.state;
     return (
